@@ -1,0 +1,3 @@
+java \
+"-DconfigFile=notification/telegram.json" \
+-jar allure-notifications-4.1.jar
