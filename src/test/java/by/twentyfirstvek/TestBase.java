@@ -2,7 +2,6 @@ package by.twentyfirstvek;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import com.github.javafaker.Faker;
 import config.CredentialsConfig;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -25,7 +24,7 @@ public class TestBase {
 
         Configuration.baseUrl = System.getProperty("base_url", "https://www.21vek.by");
         Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
-        Configuration.remote = "https://" + config.login() + ":" + config.password() + "@" + System.getProperty("server_selenoid", "selenoid.autotests.cloud/wd/hub");
+       // Configuration.remote = "https://" + config.login() + ":" + config.password() + "@" + System.getProperty("server_selenoid", "selenoid.autotests.cloud/wd/hub");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
