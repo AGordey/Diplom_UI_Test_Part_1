@@ -1,5 +1,5 @@
 # Проект по автоматизации тестирования в рамках UI части дипломного проекта онлайн-гипермаркета 21vek.by 
-<p align="left"><img width="6%" title="IntelliJ IDEA" src="images/logo/logo_21vek.by.png"></p> ##<a target="_blank" href="https://www.21vek.by/">Онлайн-гипермаркет 21vek.by</a>
+## <a target="_blank" href="https://www.21vek.by/">Онлайн-гипермаркет 21vek.by</a>
 
 ## :floppy_disk: Содержание:
 
