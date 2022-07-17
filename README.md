@@ -1,5 +1,5 @@
 # Проект по автоматизации тестирования в рамках UI части дипломного проекта онлайн-гипермаркета 21vek.by 
-## :arrow_right: <a target="_blank" href="https://www.21vek.by/">Онлайн-гипермаркет 21vek.by</a> :arrow_left:
+## <p align="center"> :arrow_right: <a target="_blank" href="https://www.21vek.by/">Онлайн-гипермаркет 21vek.by</a> :arrow_left: </p>
 ## <a target="_blank" href="https://jenkins.autotests.cloud/job/C12-Andrei_Gordey-Diplom_UI_Test_Part_1/">Сборка в Jenkins</a>
 
 ## :floppy_disk: Содержание:
