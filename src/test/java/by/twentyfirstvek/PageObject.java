@@ -60,7 +60,7 @@ public class PageObject {
 
     public PageObject openClientsMenu() {
         step("Open client's menu ", () -> {
-            $(".userToolsText").shouldBe(visible);
+//            $(".userToolsText").shouldBe(visible);
             $(".userToolsText").click();
         });
         return this;
