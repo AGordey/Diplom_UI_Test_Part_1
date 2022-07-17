@@ -2,7 +2,7 @@
   "base": {
     "project": "${JOB_BASE_NAME}",
     "environment": " my env ",
-    "comment": "If you watch this, means HW done ",
+    "comment": "If you watch this, means first part your dimlom's work done ",
     "reportLink": "${BUILD_URL}",
     "language": "en",
     "messenger": "telegram",
@@ -10,8 +10,8 @@
     "enableChart": true
   },
   "telegram": {
-    "token": "5328936966:AAFOTB-Aha9kEylG1X5eOmn93zI2l2hWZz8",
-    "chat": "-1001520442287",
+    "token": "5426707044:AAEmo6n4-PNPDFdkxjODRqExWkzIO3LR3hg",
+    "chat": "-1001567116835",
     "replyTo": ""
   }
 }
