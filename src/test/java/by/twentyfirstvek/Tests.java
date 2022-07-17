@@ -1,17 +1,10 @@
 package by.twentyfirstvek;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selectors;
-import com.codeborne.selenide.selector.ByAttribute;
-import com.codeborne.selenide.selector.ByText;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-
-import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
@@ -146,24 +139,14 @@ public class Tests extends TestBase {
         pageObject.openPage()
                 .searchFunction("Детские коляски");
     }
+
     @Test
     @DisplayName("Add in Card ")
     void checkAddInCard() {
-        pageObject.openPage();
-        pageObject.searchFunction("Холодильники");
-        step("Add to card", () ->
-            $(".b-result.g-box_lseparator").$(byText("В корзину")).click());
-        step("Check card", () ->
-            $(".headerCart").$("[data-testid=header-count]").shouldHave(text("1")));
-
+        pageObject.openPage().
+                searchFunction("Холодильники")
+                .addToCard().checkCard();
     }
-
-
-
-
-
-
-
 
 
 }

@@ -32,7 +32,8 @@ public class PageObject {
         $("#header").shouldHave(text(value));
         return this;
     }
-    public PageObject checkFooter (String value) {
+
+    public PageObject checkFooter(String value) {
         $("#footer-inner").shouldHave(text(value));
         return this;
     }
@@ -59,6 +60,7 @@ public class PageObject {
 
     public PageObject openClientsMenu() {
         step("Open client's menu ", () -> {
+            $(".userToolsText").shouldBe(visible);
             $(".userToolsText").click();
         });
         return this;
@@ -134,18 +136,19 @@ public class PageObject {
     }
 
     public PageObject setFakerEmailInField(String NameFieldCSSSelector) {
-        step("Set faker email in field with selector " + NameFieldCSSSelector , () ->
+        step("Set faker email in field with selector " + NameFieldCSSSelector, () ->
                 $(NameFieldCSSSelector).setValue(fakeremail).pressEnter()
         );
         return this;
     }
 
 
-    public PageObject checkElementsOnSelector (String Selector, String value) {
+    public PageObject checkElementsOnSelector(String Selector, String value) {
         $(Selector).shouldHave(text(value));
         return this;
     }
-    public PageObject searchFunction (String value) {
+
+    public PageObject searchFunction(String value) {
         step("Use Search Function", () -> {
             $("#catalogSearch").setValue(value).pressEnter();
             $(".content__header.cr-category_header").
@@ -154,7 +157,21 @@ public class PageObject {
         return this;
     }
 
+    public PageObject addToCard() {
+        step("Add to card", () -> {
+            $$("[data-ga_action=add_to_cart]").first().click();
+            $$("[data-ga_action=add_to_cart]").get(1).click();
+            $$("[data-ga_action=add_to_cart]").get(2).click();
+        });
+        return this;
+    }
 
+    public PageObject checkCard() {
+        step("Check count card", () -> {
+            $(".headerCart").$("[data-testid=header-count]").shouldHave(text("3"));
+        });
+        return this;
+    }
 
 
 }
