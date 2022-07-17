@@ -84,5 +84,5 @@ test
 ## :film_projector: Видео примеры прохождения тестов
 > К каждому тесту в отчете прилагается видео. Как пример, видео проверки авторизации.
 <p align="center">
-  <img title="Selenoid Video" src="images/gif/VideoTestAddInCard.mp4">
+  <img title="Selenoid Video" src="images/gif/VideoTestAddInCard.gif">
 </p>
