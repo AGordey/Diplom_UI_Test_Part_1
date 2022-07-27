@@ -12,6 +12,4 @@ public interface CredentialsConfig extends Config {
     String login1();
 
     String password1();
-
-
 }

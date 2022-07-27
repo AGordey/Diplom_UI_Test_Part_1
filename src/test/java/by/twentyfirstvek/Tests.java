@@ -59,7 +59,8 @@ public class Tests extends TestBase {
                 .clickOnElementInAuthForm("loginForm", "Забыли пароль")
                 .checkWindowWithDataId("modalCloseButton", "Сброс пароля")
                 .checkWindowWithDataId("modalCloseButton", "Электронная почта")
-                .checkWindowWithDataId("modalCloseButton", "Нажимая «Продолжить», вы соглашаетесь с политикой обработки персональных данных")
+                .checkWindowWithDataId("modalCloseButton",
+                        "Нажимая «Продолжить», вы соглашаетесь с политикой обработки персональных данных")
                 .checkWindowWithDataId("modalCloseButton", "Продолжить")
                 .setFakerEmailInField("#reset-password-email")
                 .checkErrorMessageText("Нет такого аккаунта");
@@ -73,11 +74,13 @@ public class Tests extends TestBase {
                 .clickOnElementInAuthForm("loginForm", "Регистрация")
                 .checkWindowWithDataId("modalCloseButton", "Регистрация")
                 .checkWindowWithDataId("modalCloseButton", "Электронная почта")
-                .checkWindowWithDataId("modalCloseButton", "Нажимая «Продолжить», вы соглашаетесь с политикой обработки персональных данных")
+                .checkWindowWithDataId("modalCloseButton",
+                        "Нажимая «Продолжить», вы соглашаетесь с политикой обработки персональных данных")
                 .checkWindowWithDataId("modalCloseButton", "Продолжить")
                 .setFakerEmailInField("#register-email")
                 .checkWindowWithDataId("modalCloseButton", "Вы зарегистрированы")
-                .checkWindowWithDataId("modalCloseButton", "Письмо с паролем отправлено на вашу почту, если письма нет — проверьте папку «Спам».");
+                .checkWindowWithDataId("modalCloseButton",
+                        "Письмо с паролем отправлено на вашу почту, если письма нет — проверьте папку «Спам».");
     }
 
     @Test
@@ -147,8 +150,6 @@ public class Tests extends TestBase {
                 searchFunction("Холодильники")
                 .addToCard().checkCard();
     }
-
-
 }
 
 
