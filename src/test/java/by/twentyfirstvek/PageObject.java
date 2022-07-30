@@ -124,23 +124,23 @@ public class PageObject {
         return this;
     }
 
-    public PageObject clickOnElementInAuthForm(String atributValueForDataTestID, String NameElement) {
+    public PageObject clickOnElementInAuthForm(String atributValueForDataTestID, String nameElement) {
         $(Selectors.by("data-testid", atributValueForDataTestID)).
-                $(byText(NameElement)).click();
+                $(byText(nameElement)).click();
         return this;
     }
 
 
-    public PageObject setFakerEmailInField(String NameFieldCSSSelector) {
-        step("Set faker email in field with selector " + NameFieldCSSSelector, () ->
-                $(NameFieldCSSSelector).setValue(fakeremail).pressEnter()
+    public PageObject setFakerEmailInField(String nameFieldCSSSelector) {
+        step("Set faker email in field with selector " + nameFieldCSSSelector, () ->
+                $(nameFieldCSSSelector).setValue(fakeremail).pressEnter()
         );
         return this;
     }
 
 
-    public PageObject checkElementsOnSelector(String Selector, String value) {
-        $(Selector).shouldHave(text(value));
+    public PageObject checkElementsOnSelector(String selector, String value) {
+        $(selector).shouldHave(text(value));
         return this;
     }
 
@@ -161,8 +161,8 @@ public class PageObject {
     }
 
     @Step("Check count card")
-    public PageObject checkCard() {
-        $(".headerCart").$("[data-testid=header-count]").shouldHave(text("3"));
+    public PageObject checkCard(String value) {
+        $(".headerCart").$("[data-testid=header-count]").shouldHave(text(value));
         return this;
     }
 

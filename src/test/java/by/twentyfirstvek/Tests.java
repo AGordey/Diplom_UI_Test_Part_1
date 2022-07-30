@@ -148,7 +148,7 @@ public class Tests extends TestBase {
     void checkAddInCard() {
         pageObject.openPage().
                 searchFunction("Холодильники")
-                .addToCard().checkCard();
+                .addToCard().checkCard("3");
     }
 }
 
