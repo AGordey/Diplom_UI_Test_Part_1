@@ -40,4 +40,4 @@ target/
 .vscode
 /gradlew
 /gradlew.bat
-credentials.properties
+/credentials.properties
