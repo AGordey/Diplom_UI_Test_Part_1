@@ -14,17 +14,17 @@ public class Tests extends TestBase {
     @Test
     @DisplayName("Pozitive authorization function  ")
     void checkAuthFunctionPozitive() {
-        pageObject.openPage()
-                .fillAuthorizationTrueData()
-                .openClientsMenu()
-                .checkAuthorization(config.login1());
+        generalActions.openPage();
+        authForm.fillAuthorizationTrueData();
+        generalActions.openClientsMenu();
+        authForm.checkAuthorization(config.login21vek());
     }
 
     @Test
     @DisplayName("Negative authorization function - incorrect login ")
     void checkAuthFunctionNegativeIncorrectLogin() {
-        pageObject.openPage()
-                .fillAuthorizationFalseData()
+        generalActions.openPage();
+        authForm.fillAuthorizationFalseData()
                 .countErrorMessageInLoginForm(1)
                 .checkErrorMessageText("Нет такого аккаунта. Зарегистрироваться?");
     }
@@ -33,8 +33,9 @@ public class Tests extends TestBase {
     @Test
     @DisplayName("Negative authorization function - without login and password")
     void checkRequiredLoginAndPassword() {
-        pageObject.openPage()
-                .openAuthForm()
+        generalActions.openPage();
+
+        authForm.openAuthForm()
                 .pressEnterInAuthForm()
                 .countErrorMessageInLoginForm(2)
                 .checkErrorMessageText("Электронная почта не указана")
@@ -44,41 +45,44 @@ public class Tests extends TestBase {
     @Test
     @DisplayName("Correcting password in auth form ")
     void checkCorrectingPasswordInAuthForm() {
-        pageObject.openPage()
-                .fillAuthDataWithoutEnter(config.login1(), pageObject.fakerpassword)
-                .correctingpassword(config.password1())
-                .openClientsMenu()
-                .checkAuthorization(config.login1());
+        generalActions.openPage();
+
+        authForm.fillAuthDataWithoutEnter(config.login21vek(), fakerpassword)
+                .correctingpassword(config.password21vek());
+        generalActions.openClientsMenu();
+        authForm.checkAuthorization(config.login21vek());
     }
 
     @Test
     @DisplayName("Check Password Reset function in auth form ")
     void checkPasswordResetfunctionInAuthForm() {
-        pageObject.openPage()
-                .openAuthForm()
-                .clickOnElementInAuthForm("loginForm", "Забыли пароль")
-                .checkWindowWithDataId("modalCloseButton", "Сброс пароля")
-                .checkWindowWithDataId("modalCloseButton", "Электронная почта")
-                .checkWindowWithDataId("modalCloseButton",
-                        "Нажимая «Продолжить», вы соглашаетесь с политикой обработки персональных данных")
-                .checkWindowWithDataId("modalCloseButton", "Продолжить")
-                .setFakerEmailInField("#reset-password-email")
+        generalActions.openPage();
+
+        authForm.openAuthForm()
+                .clickOnElementInAuthForm("loginForm", "Забыли пароль");
+        generalActions.checkWindowWithDataId("modalCloseButton", "Сброс пароля")
+        .checkWindowWithDataId("modalCloseButton", "Электронная почта")
+        .checkWindowWithDataId("modalCloseButton",
+                "Нажимая «Продолжить», вы соглашаетесь с политикой обработки персональных данных")
+        .checkWindowWithDataId("modalCloseButton", "Продолжить");
+        authForm.setFakerEmailInField("#reset-password-email")
                 .checkErrorMessageText("Нет такого аккаунта");
     }
 
     @Test
     @DisplayName("Check Registration function in auth form ")
     void checkRegistrationFunctionInAuthForm() {
-        pageObject.openPage()
-                .openAuthForm()
-                .clickOnElementInAuthForm("loginForm", "Регистрация")
-                .checkWindowWithDataId("modalCloseButton", "Регистрация")
+        generalActions.openPage();
+
+        authForm.openAuthForm()
+                .clickOnElementInAuthForm("loginForm", "Регистрация");
+        generalActions.checkWindowWithDataId("modalCloseButton", "Регистрация")
                 .checkWindowWithDataId("modalCloseButton", "Электронная почта")
                 .checkWindowWithDataId("modalCloseButton",
                         "Нажимая «Продолжить», вы соглашаетесь с политикой обработки персональных данных")
-                .checkWindowWithDataId("modalCloseButton", "Продолжить")
-                .setFakerEmailInField("#register-email")
-                .checkWindowWithDataId("modalCloseButton", "Вы зарегистрированы")
+                .checkWindowWithDataId("modalCloseButton", "Продолжить");
+        authForm.setFakerEmailInField("#register-email");
+        generalActions.checkWindowWithDataId("modalCloseButton", "Вы зарегистрированы")
                 .checkWindowWithDataId("modalCloseButton",
                         "Письмо с паролем отправлено на вашу почту, если письма нет — проверьте папку «Спам».");
     }
@@ -86,9 +90,9 @@ public class Tests extends TestBase {
     @Test
     @DisplayName("Check Header ")
     void checkHeaderMainPage() {
-        pageObject.openPage();
+        generalActions.openPage();
         step("Check header", () -> {
-            pageObject.checkHeader("г. Минск")
+            generalActions.checkHeader("г. Минск")
                     .checkHeader("Оплата частями")
                     .checkHeader("Бонусная программа")
                     .checkHeader("Еще");
@@ -98,57 +102,60 @@ public class Tests extends TestBase {
     @Test
     @DisplayName("Check Footer ")
     void checkFooterMainPage() {
-        pageObject.openPage();
+        generalActions.openPage();
         step("Check Footer", () -> {
-            pageObject.checkFooter("Покупателям")
+            generalActions.checkFooter("Покупателям")
                     .checkFooter("Доставка")
                     .checkFooter("Обработка персональных данных")
                     .checkFooter("Оплата");
+
+
         });
     }
 
     @Test
     @DisplayName("Check first button *Еще* with dropdown ")
     void checkDropdownForButtonInHeaderWithoutAuth() {
-        pageObject.openPage();
+        generalActions.openPage();
         step("Open dropdown button *Еще*", () ->
                 $$(Selectors.by("type", "button")).findBy(text("Еще")).click());
         step("Open dropdown button *Еще*", () -> {
-            pageObject.checkElementsOnSelector("#navMenu", "Оплата")
-                    .checkElementsOnSelector("#navMenu", "Доставка")
-                    .checkElementsOnSelector("#navMenu", "Самовывоз");
+            mainPage.checkElementsOnSelector("#navMenu", "Оплата")
+            .checkElementsOnSelector("#navMenu", "Доставка")
+            .checkElementsOnSelector("#navMenu", "Самовывоз");
         });
     }
 
     @Test
     @DisplayName("Check second button *Еще* with dropdown ")
     void checkDropdownForButtonInHeader() {
-        pageObject.openPage();
+        generalActions.openPage();
         step("Open dropdown second button *Еще*", () -> {
             $x("//*[@id=\"header\"]/div/div[1]/div/div/ul[2]/div/div/div/button").click();
         });
         step("Check dropdown button *Еще*", () -> {
-            pageObject.checkElementsOnSelector("#dropdownCommunications", "Telegram")
-                    .checkElementsOnSelector("#dropdownCommunications", "+375 17 302 10 21")
-                    .checkElementsOnSelector("#dropdownCommunications", "Почта")
-                    .checkElementsOnSelector("#dropdownCommunications", "Заказать звонок")
-                    .checkElementsOnSelector("#dropdownCommunications", "Написать нам");
+            mainPage.checkElementsOnSelector("#dropdownCommunications", "Telegram")
+            .checkElementsOnSelector("#dropdownCommunications", "+375 17 302 10 21")
+            .checkElementsOnSelector("#dropdownCommunications", "Почта")
+            .checkElementsOnSelector("#dropdownCommunications", "Заказать звонок")
+            .checkElementsOnSelector("#dropdownCommunications", "Написать нам");
         });
     }
 
     @Test
     @DisplayName("Check Search Function ")
     void checkSearchFunction() {
-        pageObject.openPage()
-                .searchFunction("Детские коляски");
+        generalActions.openPage();
+        mainPage.searchFunction("Детские коляски");
     }
 
     @Test
     @DisplayName("Add in Card ")
     void checkAddInCard() {
-        pageObject.openPage().
-                searchFunction("Холодильники")
-                .addToCard().checkCard("3");
+        generalActions.openPage();
+        mainPage.searchFunction("Холодильники")
+        .addToCard()
+        .checkCard("3");
     }
 }
 
