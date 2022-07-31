@@ -26,11 +26,11 @@ public class ObjectForMainPage {
         $$("[data-ga_action=add_to_cart]").get(2).click();
         return this;
     }
+
     public ObjectForMainPage checkElementsOnSelector(String selector, String value) {
         $(selector).shouldHave(text(value));
         return this;
     }
-
 
     @Step("Check count card")
     public ObjectForMainPage checkCardAmount(String value) {

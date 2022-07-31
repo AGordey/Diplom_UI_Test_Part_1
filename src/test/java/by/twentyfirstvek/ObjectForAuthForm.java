@@ -45,6 +45,7 @@ public class ObjectForAuthForm {
         $(".userToolsSubtitle").shouldHave(text(value), Duration.ofSeconds(10));
         return this;
     }
+
     @Step("Count error message")
     public ObjectForAuthForm countErrorMessageInLoginForm(int value) {
         $$(".input-error-message__message")
@@ -107,41 +108,6 @@ public class ObjectForAuthForm {
         );
         return this;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

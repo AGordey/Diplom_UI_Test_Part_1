@@ -89,21 +89,21 @@ public class Tests extends TestBase {
     void checkHeaderMainPage() {
         generalActions.openPage();
         step("Check header", () ->
-            generalActions.checkHeader("г. Минск")
-                    .checkHeader("Оплата частями")
-                    .checkHeader("Бонусная программа")
-                    .checkHeader("Еще"));
-            }
+                generalActions.checkHeader("г. Минск")
+                        .checkHeader("Оплата частями")
+                        .checkHeader("Бонусная программа")
+                        .checkHeader("Еще"));
+    }
 
     @Test
     @DisplayName("Check Footer ")
     void checkFooterMainPage() {
         generalActions.openPage();
         step("Check Footer", () ->
-            generalActions.checkFooter("Покупателям")
-                    .checkFooter("Доставка")
-                    .checkFooter("Обработка персональных данных")
-                    .checkFooter("Оплата"));
+                generalActions.checkFooter("Покупателям")
+                        .checkFooter("Доставка")
+                        .checkFooter("Обработка персональных данных")
+                        .checkFooter("Оплата"));
     }
 
     @Test
@@ -113,9 +113,9 @@ public class Tests extends TestBase {
         step("Open dropdown button *Еще*", () ->
                 $$(Selectors.by("type", "button")).findBy(text("Еще")).click());
         step("Open dropdown button *Еще*", () ->
-            mainPage.checkElementsOnSelector("#navMenu", "Оплата")
-                    .checkElementsOnSelector("#navMenu", "Доставка")
-                    .checkElementsOnSelector("#navMenu", "Самовывоз"));
+                mainPage.checkElementsOnSelector("#navMenu", "Оплата")
+                        .checkElementsOnSelector("#navMenu", "Доставка")
+                        .checkElementsOnSelector("#navMenu", "Самовывоз"));
     }
 
     @Test
