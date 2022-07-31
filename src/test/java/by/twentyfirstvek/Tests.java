@@ -145,7 +145,7 @@ public class Tests extends TestBase {
         generalActions.openPage();
         mainPage.searchFunction("Холодильники")
                 .addToCard()
-                .checkCard("3");
+                .checkCardAmount("3");
     }
 }
 

@@ -33,7 +33,7 @@ public class ObjectForMainPage {
 
 
     @Step("Check count card")
-    public ObjectForMainPage checkCard(String value) {
+    public ObjectForMainPage checkCardAmount(String value) {
         $(".headerCart").$("[data-testid=header-count]").shouldHave(text(value));
         return this;
     }
