@@ -35,7 +35,6 @@ public class Tests extends TestBase {
     @DisplayName("Negative authorization function - without login and password")
     void checkRequiredLoginAndPassword() {
         generalActions.openPage();
-
         authForm.openAuthForm()
                 .pressEnterInAuthForm()
                 .countErrorMessageInLoginForm(2)
@@ -47,7 +46,6 @@ public class Tests extends TestBase {
     @DisplayName("Correcting password in auth form ")
     void checkCorrectingPasswordInAuthForm() {
         generalActions.openPage();
-
         authForm.fillAuthDataWithoutEnter(config.login21vek(), fakerpassword)
                 .correctingpassword(config.password21vek());
         generalActions.openClientsMenu();
@@ -58,7 +56,6 @@ public class Tests extends TestBase {
     @DisplayName("Check Password Reset function in auth form ")
     void checkPasswordResetfunctionInAuthForm() {
         generalActions.openPage();
-
         authForm.openAuthForm()
                 .clickOnElementInAuthForm("loginForm", "Забыли пароль");
         generalActions.checkWindowWithDataId("modalCloseButton", "Сброс пароля")
@@ -74,7 +71,6 @@ public class Tests extends TestBase {
     @DisplayName("Check Registration function in auth form ")
     void checkRegistrationFunctionInAuthForm() {
         generalActions.openPage();
-
         authForm.openAuthForm()
                 .clickOnElementInAuthForm("loginForm", "Регистрация");
         generalActions.checkWindowWithDataId("modalCloseButton", "Регистрация")
@@ -92,26 +88,22 @@ public class Tests extends TestBase {
     @DisplayName("Check Header ")
     void checkHeaderMainPage() {
         generalActions.openPage();
-        step("Check header", () -> {
+        step("Check header", () ->
             generalActions.checkHeader("г. Минск")
                     .checkHeader("Оплата частями")
                     .checkHeader("Бонусная программа")
-                    .checkHeader("Еще");
-        });
-    }
+                    .checkHeader("Еще"));
+            }
 
     @Test
     @DisplayName("Check Footer ")
     void checkFooterMainPage() {
         generalActions.openPage();
-        step("Check Footer", () -> {
+        step("Check Footer", () ->
             generalActions.checkFooter("Покупателям")
                     .checkFooter("Доставка")
                     .checkFooter("Обработка персональных данных")
-                    .checkFooter("Оплата");
-
-
-        });
+                    .checkFooter("Оплата"));
     }
 
     @Test
@@ -120,11 +112,10 @@ public class Tests extends TestBase {
         generalActions.openPage();
         step("Open dropdown button *Еще*", () ->
                 $$(Selectors.by("type", "button")).findBy(text("Еще")).click());
-        step("Open dropdown button *Еще*", () -> {
+        step("Open dropdown button *Еще*", () ->
             mainPage.checkElementsOnSelector("#navMenu", "Оплата")
                     .checkElementsOnSelector("#navMenu", "Доставка")
-                    .checkElementsOnSelector("#navMenu", "Самовывоз");
-        });
+                    .checkElementsOnSelector("#navMenu", "Самовывоз"));
     }
 
     @Test

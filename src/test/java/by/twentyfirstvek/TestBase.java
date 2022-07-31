@@ -23,8 +23,7 @@ public class TestBase {
 
     static CredentialsConfig config = ConfigFactory.create(CredentialsConfig.class);
     Faker faker = new Faker();
-    String fakerpassword = faker.numerify("####################"),
-            fakeremail = faker.internet().emailAddress();
+    String fakerpassword = faker.numerify("####################");
 
     @BeforeAll
     static void setUp() {
@@ -32,7 +31,7 @@ public class TestBase {
 
         Configuration.baseUrl = System.getProperty("base_url", "https://www.21vek.by");
         Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
-//        Configuration.remote = "https://" + config.loginForSelenoid() + ":" + config.passwordForSelenoid() + "@" + System.getProperty("server_selenoid", "selenoid.autotests.cloud/wd/hub");
+        Configuration.remote = "https://" + config.loginForSelenoid() + ":" + config.passwordForSelenoid() + "@" + System.getProperty("server_selenoid", "selenoid.autotests.cloud/wd/hub");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
