@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
@@ -61,10 +62,10 @@ public class Tests extends TestBase {
         authForm.openAuthForm()
                 .clickOnElementInAuthForm("loginForm", "Забыли пароль");
         generalActions.checkWindowWithDataId("modalCloseButton", "Сброс пароля")
-        .checkWindowWithDataId("modalCloseButton", "Электронная почта")
-        .checkWindowWithDataId("modalCloseButton",
-                "Нажимая «Продолжить», вы соглашаетесь с политикой обработки персональных данных")
-        .checkWindowWithDataId("modalCloseButton", "Продолжить");
+                .checkWindowWithDataId("modalCloseButton", "Электронная почта")
+                .checkWindowWithDataId("modalCloseButton",
+                        "Нажимая «Продолжить», вы соглашаетесь с политикой обработки персональных данных")
+                .checkWindowWithDataId("modalCloseButton", "Продолжить");
         authForm.setFakerEmailInField("#reset-password-email")
                 .checkErrorMessageText("Нет такого аккаунта");
     }
@@ -121,8 +122,8 @@ public class Tests extends TestBase {
                 $$(Selectors.by("type", "button")).findBy(text("Еще")).click());
         step("Open dropdown button *Еще*", () -> {
             mainPage.checkElementsOnSelector("#navMenu", "Оплата")
-            .checkElementsOnSelector("#navMenu", "Доставка")
-            .checkElementsOnSelector("#navMenu", "Самовывоз");
+                    .checkElementsOnSelector("#navMenu", "Доставка")
+                    .checkElementsOnSelector("#navMenu", "Самовывоз");
         });
     }
 
@@ -130,16 +131,14 @@ public class Tests extends TestBase {
     @DisplayName("Check second button *Еще* with dropdown ")
     void checkDropdownForButtonInHeader() {
         generalActions.openPage();
-        step("Open dropdown second button *Еще*", () -> {
-            $x("//*[@id=\"header\"]/div/div[1]/div/div/ul[2]/div/div/div/button").click();
-        });
-        step("Check dropdown button *Еще*", () -> {
-            mainPage.checkElementsOnSelector("#dropdownCommunications", "Telegram")
-            .checkElementsOnSelector("#dropdownCommunications", "+375 17 302 10 21")
-            .checkElementsOnSelector("#dropdownCommunications", "Почта")
-            .checkElementsOnSelector("#dropdownCommunications", "Заказать звонок")
-            .checkElementsOnSelector("#dropdownCommunications", "Написать нам");
-        });
+        step("Open dropdown second button *Еще*", () ->
+                $(byText("Еще"), 1).click());
+        step("Check dropdown button *Еще*", () ->
+                mainPage.checkElementsOnSelector("#dropdownCommunications", "Telegram")
+                        .checkElementsOnSelector("#dropdownCommunications", "+375 17 302 10 21")
+                        .checkElementsOnSelector("#dropdownCommunications", "Почта")
+                        .checkElementsOnSelector("#dropdownCommunications", "Заказать звонок")
+                        .checkElementsOnSelector("#dropdownCommunications", "Написать нам"));
     }
 
     @Test
@@ -154,8 +153,8 @@ public class Tests extends TestBase {
     void checkAddInCard() {
         generalActions.openPage();
         mainPage.searchFunction("Холодильники")
-        .addToCard()
-        .checkCard("3");
+                .addToCard()
+                .checkCard("3");
     }
 }
 
